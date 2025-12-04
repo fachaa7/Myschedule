@@ -5,9 +5,9 @@ $username   = "root";
 $password   = "";
 $db   = "pbl"; 
 
-$conn = mysqli_connect($host, $username, $password, $db);
+$koneksi = mysqli_connect($host, $username, $password, $db);
 
-if (!$conn) {
+if (!$koneksi) {
     die("Gagal mengakses Database : " . mysqli_connect_error());
 }
 
