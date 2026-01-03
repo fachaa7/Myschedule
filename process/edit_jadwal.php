@@ -10,9 +10,9 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Cek apakah form di-submit
+// Cek apakah data di-submit
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Escape semua input
+
     $id = mysqli_real_escape_string($koneksi, $_POST['id']);
     $mata_kuliah = mysqli_real_escape_string($koneksi, $_POST['mata_kuliah']);
     $hari = mysqli_real_escape_string($koneksi, $_POST['hari']);
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $ruangan = mysqli_real_escape_string($koneksi, $_POST['ruangan']);
     $dosen = mysqli_real_escape_string($koneksi, $_POST['dosen']);
     
-    // Query UPDATE
+
     $query = "UPDATE jadwal SET 
               mata_kuliah = '$mata_kuliah',
               hari = '$hari',

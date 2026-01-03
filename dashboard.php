@@ -12,7 +12,7 @@ $user_id = $_SESSION['user_id'];
 
 
 
-// Ambil data user
+// cek user
 $query = mysqli_query($koneksi, "SELECT * FROM users WHERE id = '$user_id'");
 $user = mysqli_fetch_assoc($query);
 
@@ -21,7 +21,7 @@ if (!$user) {
     exit();
 }
 
-// ==================== AMBIL SEMUA JADWAL ====================
+// ==================== Ambil Semua Jadwal ====================
 $query_jadwal = "SELECT * FROM jadwal WHERE user_id = '$user_id' ORDER BY tanggal ASC, jam_mulai ASC";
 $result_jadwal = mysqli_query($koneksi, $query_jadwal);
 $jadwal_list = [];
@@ -38,10 +38,10 @@ while ($row = mysqli_fetch_assoc($result_today)) {
     $jadwal_today[] = $row;
 }
 
-// Set active page
+// tentukan halaman aktif
 $active_page = isset($_GET['page']) ? $_GET['page'] : 'home';
 
-// Jika ada parameter edit
+// kalo ada edit, ambil data jadwal yang akan diedit
 $edit_data = null;
 if (isset($_GET['edit'])) {
     $edit_id = mysqli_real_escape_string($koneksi, $_GET['edit']);
@@ -50,27 +50,18 @@ if (isset($_GET['edit'])) {
     $edit_data = mysqli_fetch_assoc($result_edit);
 }
 
-// Include header
+// render halaman
 include 'includes/header.php';
 ?>
 
-<script>
-    // Auto close setelah 5 detik
-    setTimeout(function() {
-        const alert = document.getElementById('alertNotification');
-        if (alert) {
-            alert.remove();
-        }
-    }, 5000);
-</script>
 
-<!-- Include Sidebar -->
+<!-- Render halaman -->
 <?php include 'includes/sidebar.php'; ?>
 
 <!-- Main Content -->
 <div class="main-content">
     <?php
-    // Include all pages
+    // Include halaman berdasarkan halaman aktif
     include 'pages/home.php';
     include 'pages/jadwal.php';
     include 'pages/kalender.php';

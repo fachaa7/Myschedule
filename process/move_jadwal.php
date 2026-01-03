@@ -12,7 +12,7 @@ $user_id = $_SESSION['user_id'];
 
 // Cek apakah form di-submit
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Escape input
+
     $jadwal_id = mysqli_real_escape_string($koneksi, $_POST['jadwal_id']);
     $new_date = mysqli_real_escape_string($koneksi, $_POST['new_date']);
     $old_date = mysqli_real_escape_string($koneksi, $_POST['old_date']);

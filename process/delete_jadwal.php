@@ -10,12 +10,11 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Cek apakah ada parameter id
+// Cek queri ID
 if (isset($_GET['id'])) {
-    // Escape input
+
     $id = mysqli_real_escape_string($koneksi, $_GET['id']);
     
-    // Query DELETE
     $query = "DELETE FROM jadwal WHERE id = '$id' AND user_id = '$user_id'";
     
     if (mysqli_query($koneksi, $query)) {
@@ -31,7 +30,7 @@ if (isset($_GET['id'])) {
     $_SESSION['error'] = "ID jadwal tidak valid!";
 }
 
-// Redirect
+// Redirect kembali
 $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : 'jadwal';
 header("Location: ../dashboard.php?page=" . $redirect);
 exit();

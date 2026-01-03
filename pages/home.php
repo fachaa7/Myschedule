@@ -6,14 +6,14 @@
         <p class="lead text-white">Kelola jadwal kuliah Anda dengan mudah</p>
     </div>
 
-    <!-- Search Box -->
+    <!-- Fitur pencari -->
     <div class="search-box">
         <input type="text" class="form-control" id="searchInput" 
                placeholder="Cari jadwal kuliah atau dosen..." onkeyup="handleSearch()">
         <i class="bi bi-search search-icon"></i>
     </div>
 
-    <!-- Today Schedule -->
+    <!-- Untuk hari ini  -->
     <div class="card shadow-lg">
         <div class="card-body p-4">
             <h2>Jadwal Hari Ini (<?php echo $hari_ini; ?>)</h2>

@@ -12,7 +12,6 @@ $user_id = $_SESSION['user_id'];
 
 // Cek apakah form di-submit
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Escape semua input
     $mata_kuliah = mysqli_real_escape_string($koneksi, $_POST['mata_kuliah']);
     $hari = mysqli_real_escape_string($koneksi, $_POST['hari']);
     $tanggal = mysqli_real_escape_string($koneksi, $_POST['tanggal']);
@@ -21,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $ruangan = mysqli_real_escape_string($koneksi, $_POST['ruangan']);
     $dosen = mysqli_real_escape_string($koneksi, $_POST['dosen']);
     
-    // Query INSERT
+
     $query = "INSERT INTO jadwal (user_id, mata_kuliah, hari, tanggal, jam_mulai, jam_selesai, ruangan, dosen, catatan) 
               VALUES ('$user_id', '$mata_kuliah', '$hari', '$tanggal', '$jam_mulai', '$jam_selesai', '$ruangan', '$dosen', '')";
     
