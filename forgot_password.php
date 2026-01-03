@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'koneksi.php';
+include 'config/koneksi.php';
 
 $message = '';
 
@@ -89,10 +89,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       alert('Nomor telepon harus 10–13 digit!');
       return;
     }
-
-    // Simpan data sementara (misalnya di sessionStorage)
-    const resetData = { username, contact, code: "123456" }; 
-    sessionStorage.setItem('resetData', JSON.stringify(resetData));
 
     // Lanjut ke halaman berikut
     window.location.href = 'verifikasi.php';

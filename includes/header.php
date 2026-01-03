@@ -71,6 +71,8 @@
             margin-bottom: 30px;
         }
 
+        
+
         .footer {
             background-color: #8B5E34;
             color: white;

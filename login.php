@@ -34,7 +34,7 @@ session_start();
       <button type="submit" class="btn btn-login">Login</button>
 
       <div class="extra-link">
-        <a href="lupa1.php">Lupa password</a>
+        <a href="forgot_password.php">Lupa password</a>
         <a href="register.php">Register</a>
       </div>
     </form>

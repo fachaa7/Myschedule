@@ -10,6 +10,8 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
+
+
 // Ambil data user
 $query = mysqli_query($koneksi, "SELECT * FROM users WHERE id = '$user_id'");
 $user = mysqli_fetch_assoc($query);
@@ -51,6 +53,16 @@ if (isset($_GET['edit'])) {
 // Include header
 include 'includes/header.php';
 ?>
+
+<script>
+    // Auto close setelah 5 detik
+    setTimeout(function() {
+        const alert = document.getElementById('alertNotification');
+        if (alert) {
+            alert.remove();
+        }
+    }, 5000);
+</script>
 
 <!-- Include Sidebar -->
 <?php include 'includes/sidebar.php'; ?>

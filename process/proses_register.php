@@ -6,7 +6,7 @@ $nim = $_POST['nim'];
 $contact = $_POST['contact'];
 $password = $_POST['password'];
 $confirmPassword = $_POST['confirmPassword'];
-$role = "user"; // set role default sebagai 'user'
+$role = "user";
 
 if ($password !== $confirmPassword) {
     echo "<script>alert('Konfirmasi password tidak cocok!'); window.location.href='../register.php';</script>";
@@ -19,7 +19,6 @@ if (mysqli_num_rows($check) > 0) {
     echo "<script>alert('Username sudah terdaftar!'); window.location.href='../register.php';</script>";
     exit;   
 }
-
 
 
 $query = "INSERT INTO users (username, nim, contact, pw, role)
