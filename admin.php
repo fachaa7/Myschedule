@@ -8,6 +8,11 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+if (isset($_SESSION['login_success_admin'])) {
+    echo "<script>alert('" . $_SESSION['login_success_admin'] . "');</script>";
+    unset($_SESSION['login_success_admin']);
+}
+
 $totalsiswa = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) AS total FROM users"))['total'];
 $akunterbaru = mysqli_query($koneksi, "SELECT username, nim, tanggal_daftar FROM users ORDER BY tanggal_daftar DESC LIMIT 5");
 
