@@ -21,6 +21,11 @@ if (!$user) {
     exit();
 }
 
+if (isset($_SESSION['login_success_user'])) {
+    echo "<script>alert('" . $_SESSION['login_success_user'] . "');</script>";
+    unset($_SESSION['login_success_user']);
+}
+
 // ==================== Ambil Semua Jadwal ====================
 $query_jadwal = "SELECT * FROM jadwal WHERE user_id = '$user_id' ORDER BY tanggal ASC, jam_mulai ASC";
 $result_jadwal = mysqli_query($koneksi, $query_jadwal);
