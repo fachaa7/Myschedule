@@ -17,8 +17,8 @@ if (isset($_POST['tambahAkun'])) {
     $status   = 'aktif';
     $role     = 'user';
 
-    $query = "INSERT INTO users (nim, username, contact, pw, role) 
-              VALUES ('$nim', '$username', '$contact', '$pw', '$role')";
+    $query = "INSERT INTO users (nim, username, contact, pw, role, tanggal_daftar) 
+              VALUES ('$nim', '$username', '$contact', '$pw', '$role', NOW())";
     
     if (mysqli_query($koneksi, $query)) {
         $_SESSION['success'] = "Akun berhasil ditambahkan!";
@@ -26,7 +26,7 @@ if (isset($_POST['tambahAkun'])) {
         $_SESSION['error'] = "Gagal menambahkan akun: " . mysqli_error($koneksi);
     }
 
-    header("Location: process/manajemen.php");
+    header("Location: manajemen.php");
     exit();
 }
 
@@ -53,7 +53,7 @@ if (isset($_POST['editAkun'])) {
         $_SESSION['error'] = "Gagal memperbarui akun: " . mysqli_error($koneksi);
     }
 
-    header("Location: process/manajemen.php");
+    header("Location: manajemen.php");
     exit();
 }
 
@@ -69,7 +69,7 @@ if (isset($_GET['aksi']) && $_GET['aksi'] === 'hapus' && isset($_GET['id'])) {
         $_SESSION['error'] = "Gagal menghapus akun: " . mysqli_error($koneksi);
     }
 
-    header("Location: process/manajemen.php");
+    header("Location: manajemen.php");
     exit();
 }
 
