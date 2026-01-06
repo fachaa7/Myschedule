@@ -1,3 +1,14 @@
+<?php
+include 'config/koneksi.php';
+session_start();
+
+if (isset($_SESSION['register_error'])) {
+    echo "<script>alert('" . $_SESSION['register_error'] . "');</script>";
+    unset($_SESSION['register_error']);
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="id">
 <head>

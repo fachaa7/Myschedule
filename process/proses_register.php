@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../config/koneksi.php';
 
 $username = $_POST['username'];
@@ -7,6 +8,18 @@ $contact = $_POST['contact'];
 $password = $_POST['password'];
 $confirmPassword = $_POST['confirmPassword'];
 $role = "user";
+
+if (empty($password)) {
+    $_SESSION['register_error'] = "Password tidak boleh kosong!";
+    header("Location: ../register.php");
+    exit;
+}
+
+if (strlen($password) < 8) {
+    $_SESSION['register_error'] = "Password minimal 8 karakter!";
+    header("Location: ../register.php");
+    exit;
+}
 
 if ($password !== $confirmPassword) {
     echo "<script>alert('Konfirmasi password tidak cocok!'); window.location.href='../register.php';</script>";
