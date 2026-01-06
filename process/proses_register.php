@@ -1,5 +1,5 @@
 <?php
-include '../config/koneksi.php'; // file koneksi ke database
+include '../config/koneksi.php';
 
 $username = $_POST['username'];
 $nim = $_POST['nim'];

@@ -38,7 +38,7 @@
     <?php endif; ?>
 </div>
 
-<!-- Modal Form -->
+<!-- Modal Tambah jadwal -->
 <div class="modal fade" id="jadwalModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">

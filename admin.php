@@ -8,6 +8,11 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+if (isset($_SESSION['login_success_admin'])) {
+    echo "<script>alert('" . $_SESSION['login_success_admin'] . "');</script>";
+    unset($_SESSION['login_success_admin']);
+}
+
 $totalsiswa = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) AS total FROM users"))['total'];
 $akunterbaru = mysqli_query($koneksi, "SELECT username, nim, tanggal_daftar FROM users ORDER BY tanggal_daftar DESC LIMIT 5");
 
@@ -26,9 +31,8 @@ $role = $_SESSION['role'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MySchedule - Admin Panel</title>
 
-    <!-- Bootstrap CSS -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/admin.css">
 </head>

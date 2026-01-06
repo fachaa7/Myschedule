@@ -31,7 +31,7 @@
         </a>
     </div>
     
-    <!-- Logout Button di Pojok Bawah -->
+
     <form action="logout.php" method="post">
         <button type="submit" class="logout-btn">
             <i class="bi bi-box-arrow-right"></i> <span>Logout</span>

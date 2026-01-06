@@ -1,9 +1,9 @@
 <?php
-// Get month and year from URL
+// ngambil bulan dan tahun dari URL
 $cal_month = isset($_GET['month']) ? (int) $_GET['month'] : date('n');
 $cal_year = isset($_GET['year']) ? (int) $_GET['year'] : date('Y');
 
-// Calculate prev and next month
+// Menghitung bulan sebelumnya dan berikutnya
 $prev_month = $cal_month - 1;
 $prev_year = $cal_year;
 if ($prev_month < 1) {
@@ -65,16 +65,16 @@ $days_in_month = date('t', mktime(0, 0, 0, $cal_month, 1, $cal_year));
 
             <div class="calendar-grid">
                 <?php
-                // Empty cells
+                // kosongkan kotak sebelum hari pertama
                 for ($i = 0; $i < $first_day; $i++) {
                     echo '<div class="calendar-day"></div>';
                 }
 
-                // Days
+                // Harian
                 for ($day = 1; $day <= $days_in_month; $day++) {
                     $date = sprintf('%04d-%02d-%02d', $cal_year, $cal_month, $day);
 
-                    // Get schedules for this day
+                    // Ngambil jadwal di tanggal ini
                     $day_jadwal = [];
                     foreach ($jadwal_list as $jadwal) {
                         if ($jadwal['tanggal'] == $date) {
@@ -92,7 +92,7 @@ $days_in_month = date('t', mktime(0, 0, 0, $cal_month, 1, $cal_year));
                                onclick="openAddJadwalWithDate(\'' . $date . '\')">';
                     echo '<div class="day-number">' . $day . '</div>';
 
-                    // Show first schedule
+                    // Menampilkan jadwal jika ada
                     if ($count > 0) {
                         $jadwal = $day_jadwal[0];
                         echo '<div class="calendar-event" 
@@ -104,7 +104,7 @@ $days_in_month = date('t', mktime(0, 0, 0, $cal_month, 1, $cal_year));
                                    </a>
                               </div>';
 
-                        // Show "+N more" if multiple schedules
+                        // menampilkan jika ada lebih dari 1 jadwal
                         if ($count > 1) {
                             $jadwal_json = htmlspecialchars(json_encode($day_jadwal));
                             echo '<div class="more-events" onclick="event.stopPropagation(); showAllJadwalPopup(' . $jadwal_json . ')">
@@ -126,14 +126,14 @@ $days_in_month = date('t', mktime(0, 0, 0, $cal_month, 1, $cal_year));
     </div>
 </div>
 
-<!-- Hidden Form untuk Drag & Drop -->
+<!-- Sembunyikan Form untuk Diseret -->
 <form id="dragDropForm" method="POST" action="process/move_jadwal.php" style="display: none;">
     <input type="hidden" name="jadwal_id" id="dragJadwalId">
     <input type="hidden" name="new_date" id="dragNewDate">
     <input type="hidden" name="old_date" id="dragOldDate">
 </form>
 
-<!-- Modal Popup untuk Multiple Schedules -->
+<!-- Modal popup untuk Multiple Schedules -->
 <div class="modal fade" id="multipleScheduleModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">

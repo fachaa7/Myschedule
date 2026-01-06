@@ -1,7 +1,11 @@
 <?php
 include 'config/koneksi.php';
 session_start();
-?>
+
+if (isset($_SESSION['login_error'])) {
+    echo "<script>alert('" . $_SESSION['login_error'] . "');</script>";
+    unset($_SESSION['login_error']);
+}?>
 
 <!DOCTYPE html>
 <html lang="id">

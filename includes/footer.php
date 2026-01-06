@@ -2,13 +2,8 @@
     <p>© 2025 MySchedule | Aplikasi pengelola jadwal kuliah</p>
 </footer>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- SweetAlert2 -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<!-- Animate.css -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 <script>
@@ -17,7 +12,7 @@
 
 
 
-    // ========== SEARCH FUNCTION ==========
+    // ========== Funtion seacrh ==========
     function handleSearch() {
         const query = document.getElementById('searchInput').value.toLowerCase().trim();
         const cards = document.querySelectorAll('.jadwal-item');
@@ -46,14 +41,12 @@
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                // Langsung redirect ke logout.php tanpa loading animation
                 window.location.href = 'logout.php';
             }
         });
     }
     // ========== Untuk centang kalo dah siap ==========
     function markAsDone(id) {
-
         window.location.href = 'process/mark_done.php?id=' + id;
     };
 
@@ -107,7 +100,7 @@
         }
     });
 
-    // ========== MODAL FUNCTIONS ==========
+    // ========== Fungsi modal ==========
     function resetForm() {
         document.getElementById('jadwalFormElement').action = 'process/add_jadwal.php';
         document.getElementById('jadwalFormElement').reset();
@@ -149,7 +142,7 @@
         modal.show();
     }
 
-    // ========== SHOW MULTIPLE SCHEDULES POPUP ==========
+    // ========== Menampilkan semua Popup ==========
     function showAllJadwalPopup(jadwalArray) {
         let html = '';
         jadwalArray.forEach((j, idx) => {
