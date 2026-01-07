@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$expired) {
       <div class="card p-4">
         <div class="card-body">
           <img src="https://upload.wikimedia.org/wikipedia/id/2/2c/Politeknik_Negeri_Batam.png" alt="logo" class="logo">
-            <h3 class="text-center">Verifikasi Kode OTP</h3>
+            <h3 class="card-title text-center">Verifikasi Kode OTP</h3>
 
             <?php if ($message) echo $message; ?>
 
@@ -62,10 +62,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$expired) {
                     <label>Masukkan Kode</label>
                     <input type="text" name="code" class="form-control" required>
                 </div>
-                <button class="btn btn-success w-100"style="background-color:#E2C892; border-color:#E2C892; color:rgba(255, 255, 255, 0.93);">Verifikasi</button>
+                <button class="btn btn-primary w-100">Verifikasi</button>
             </form>
                 <div class="text-center mt-3">
-                    <a href="forgot_password.php" style="color:#E2C892; text-decoration:none;">← Ulangi proses</a>
+                    <a href="forgot_password.php" class="back-link">← Ulangi proses</a>
                 </div>
         </div>
       </div>
