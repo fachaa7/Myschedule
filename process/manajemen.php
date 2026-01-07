@@ -2,13 +2,13 @@
 session_start();
 include '../config/koneksi.php';
 
-// CEK LOGIN & ROLE ADMIN
+// cek login dan role admin 
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     header("Location: ../login.php");
     exit();
 }
 
-// PROSES TAMBAH AKUN
+// nambahkan akun baru
 if (isset($_POST['tambahAkun'])) {
     $nim      = mysqli_real_escape_string($koneksi, $_POST['nim']);
     $username = mysqli_real_escape_string($koneksi, $_POST['username']);
@@ -30,7 +30,7 @@ if (isset($_POST['tambahAkun'])) {
     exit();
 }
 
-// PROSES EDIT AKUN
+// edit akun user
 if (isset($_POST['editAkun'])) {
     $id       = intval($_POST['id']);
     $nim      = mysqli_real_escape_string($koneksi, $_POST['nim']);
@@ -57,7 +57,7 @@ if (isset($_POST['editAkun'])) {
     exit();
 }
 
-// PROSES HAPUS AKUN
+// hapus akun user
 if (isset($_GET['aksi']) && $_GET['aksi'] === 'hapus' && isset($_GET['id'])) {
     $id = intval($_GET['id']);
     
@@ -73,7 +73,7 @@ if (isset($_GET['aksi']) && $_GET['aksi'] === 'hapus' && isset($_GET['id'])) {
     exit();
 }
 
-// AMBIL DATA USERS
+// ambil data user
 $users = mysqli_query($koneksi, "SELECT * FROM users ORDER BY id DESC");
 
 $namaAdmin = $_SESSION['username'] ?? 'Admin';
@@ -85,7 +85,6 @@ $roleAdmin = $_SESSION['role'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - Manajemen Akun</title>
-
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -94,17 +93,17 @@ $roleAdmin = $_SESSION['role'];
 
 <body>
 
-<!-- SIDEBAR -->
-<div class="sidebar d-flex flex-column">
+<!-- Sidebar -->
+    <div class="sidebar d-flex flex-column">
     <div class="logo">
-        <i class="bi bi-shield-lock"></i> Admin Panel
+        <i class="bi bi-shield-lock"></i>Admin Panel
     </div>
 
     <div class="admin-info">
         <div class="d-flex align-items-center">
             <i class="bi bi-person-circle me-2 fs-4"></i>
             <div>
-                <div class="fw-bold"><?= htmlspecialchars($namaAdmin) ?></div>
+                <div class="fw-bold" id="adminName"><?= htmlspecialchars($namaAdmin) ?></div>
                 <small><?= htmlspecialchars($roleAdmin) ?></small>
             </div>
         </div>
@@ -115,10 +114,10 @@ $roleAdmin = $_SESSION['role'];
         <span>Dashboard</span>
     </a>
 
-    <a href="process/manajemen.php" class="nav-item active">
-        <i class="bi bi-people"></i>
-        <span>Manajemen Akun</span>
-    </a>
+    <div class="nav-item active" onclick="showPage('Manajemen Akun')">
+            <i class="bi bi-speedometer2"></i>
+            <span>Manajemen Akun</span>
+        </div>
 
     <form action="../logout.php" method="POST" class="mt-auto w-100">
         <button type="submit" class="logout-btn w-100">
@@ -190,7 +189,7 @@ $roleAdmin = $_SESSION['role'];
     </div>
 </div>
 
-<!-- MODAL TAMBAH AKUN -->
+<!-- Modal Tambah Akun -->
 <div class="modal fade" id="tambahAkunModal" tabindex="-1">
     <div class="modal-dialog">
         <form method="POST" class="modal-content">
@@ -236,7 +235,7 @@ $roleAdmin = $_SESSION['role'];
     </div>
 </div>
 
-<!-- MODAL EDIT AKUN -->
+<!-- Modal Edit Akun -->
 <div class="modal fade" id="editAkunModal" tabindex="-1">
     <div class="modal-dialog">
         <form method="POST" class="modal-content">
