@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = mysqli_real_escape_string($koneksi, $_POST['username']);
     $pass = mysqli_real_escape_string($koneksi, $_POST['password']);
 
-    $query = mysqli_query($koneksi, "SELECT * FROM users WHERE username='$user'");
+    $query = mysqli_query($koneksi, "SELECT * FROM users WHERE username='$user' OR nim='$user'");
     $row   = mysqli_fetch_assoc($query);
 
 
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
 
     } else {
-        $_SESSION['login_error'] = "Username atau Password salah.";
+        $_SESSION['login_error'] = "Username/NIM atau Password salah.";
         header("Location: ../login.php");
         exit();
     }
