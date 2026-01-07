@@ -26,8 +26,8 @@ if (isset($_SESSION['login_error'])) {
       <img src="https://upload.wikimedia.org/wikipedia/id/2/2c/Politeknik_Negeri_Batam.png" class="logo">
 
       <div class="mb-2">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" name="username" class="form-control" placeholder="Masukkan username anda" required>
+        <label for="username" class="form-label">Username/NIM</label>
+        <input type="text" name="username" class="form-control" placeholder="Masukkan username atau NIM anda" required>
       </div>
 
       <div class="mb-2">
