@@ -79,6 +79,7 @@ $users = mysqli_query($koneksi, "SELECT * FROM users ORDER BY id DESC");
 $namaAdmin = $_SESSION['username'] ?? 'Admin';
 $roleAdmin = $_SESSION['role'];
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -129,8 +130,6 @@ $roleAdmin = $_SESSION['role'];
 <!-- MAIN CONTENT -->
 <div class="main-content">
     <div class="container py-4">
-
-
 
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h3 class="text-white">🔐 Manajemen Akun Siswa</h3>
@@ -291,7 +290,6 @@ function editAkun(id, nim, username, contact) {
     document.getElementById('edit_username').value = username;
     document.getElementById('edit_contact').value = contact;
 }
-
 
 </script>
 </body>
