@@ -17,8 +17,6 @@ $totalsiswa = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) AS tota
 $akunterbaru = mysqli_query($koneksi, "SELECT username, nim, tanggal_daftar FROM users ORDER BY tanggal_daftar DESC LIMIT 5");
 
 $nama = $_SESSION['nama'];
-$nim = $_SESSION['nim'];
-$contact = $_SESSION['contact'];
 $role = $_SESSION['role'];
 
 ?>
@@ -85,7 +83,7 @@ $role = $_SESSION['role'];
                             </div>
                             <div>
                                 <h3 class="mb-0" id="totalSiswa"><?= $totalsiswa ?></h3>
-                                <small class="text-muted">Total Siswa</small>
+                                <small class="text-muted">Total User</small>
                             </div>
                         </div>
                     </div>
